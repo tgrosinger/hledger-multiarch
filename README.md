@@ -12,7 +12,7 @@ docker run \
     --env "HLEDGER_BASE_URL=http://localhost:5000" \
     -v /path/to/journal.ledger:/data/journal.ledger \
     -p 5000:5000 \
-    ghcr.io/tgrosinger/hledger:1.26.1
+    ghcr.io/tgrosinger/hledger-multiarch:1.26.1
 ```
 
 Then open http://localhost:5000.
