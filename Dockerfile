@@ -17,7 +17,8 @@ RUN mkdir /hledger && cd /hledger && \
     export LANG=C.UTF-8 && \
     export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH" && \
     stack install --allow-different-user hledger && \
-    stack install --allow-different-user hledger-web
+    stack install --allow-different-user hledger-web && \
+    stack install --allow-different-user hledger-iadd-1.3.17
 
 #
 # Final Image
@@ -27,6 +28,7 @@ FROM ubuntu:20.04
 
 COPY --from=builder /root/.local/bin/hledger /usr/bin/hledger
 COPY --from=builder /root/.local/bin/hledger-web /usr/bin/hledger-web
+COPY --from=builder /root/.local/bin/hledger-iadd /usr/bin/hledger-iadd
 COPY --from=builder /hledger/docker/start.sh /start.sh
 
 ENV LC_ALL C.UTF-8
